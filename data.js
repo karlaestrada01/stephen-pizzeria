@@ -9,7 +9,7 @@ export const menuItems = [
     },
     {
         name: "Basil Mozarella Pizza",
-        description: "pepperoni, ham, sausage, mozarella",
+        description: "basil, fresh mozarella, and our signature sauce",
         price: 14,
         img: "images/basil-pizza.jpg",
         alt: "An image of a basil and mozarella pizza",

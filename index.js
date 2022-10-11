@@ -5,7 +5,7 @@ const cartContainer = document.querySelector(".cart-container")
 const modalContainer = document.querySelector(".modal-container")
 const payForm = document.getElementById("pay-form")
 //array of our food items
-const foodMenu = []
+let foodMenu = []
 let addedToCart = []
 const isCartEmpty = true;
 function render() {
@@ -19,7 +19,7 @@ function render() {
 }
 render()
 itemContainer.addEventListener("click", function(e) {
-
+    cartContainer.style.display = "block"
     const clickedItem = e.target.id
 
     if(clickedItem){
@@ -63,7 +63,7 @@ itemContainer.addEventListener("click", function(e) {
 
 function renderCart() {
     
-    
+    // if(addedItems>0){
     const addedItems = document.querySelector(".added-items")
     addedItems.innerHTML = ""
     let count = 0;
@@ -72,8 +72,8 @@ function renderCart() {
         addedItems.innerHTML += `
         <div class="chosen-item">
             <div class="word-spacing">
-            <h2 class="food-name">${food.name}</h2>
-            <p><a class="remove-link" id="${count}" href=#>Remove</a></p>
+                <h2 class="food-name">${food.name}</h2>
+                <p><a class="remove-link" id="${count}" href=#>Remove</a></p>
             </div>
             <h2>$${food.price}</h2>
         </div>
@@ -85,9 +85,9 @@ function renderCart() {
     if(!addedToCart.length>0){
         //cartContainer.innerHTML = ""
     }
-
+   // }
 // else {
-//     cartContainer.style.display = "none"
+//     cartContainer.innerHTML = ""
 // }
 }
 /**
@@ -127,14 +127,16 @@ payForm.addEventListener('submit', function(e) {
         cartContainer.style.display = "none"
         modalContainer.style.display = "none"
         document.querySelector(".thanks-msg").innerHTML = `
+        <div class="thanks-container">
         <h1> Thanks ${name}! Your order is on its way!</h1>
+        </div>
         `
     }, 2000)
 
     setTimeout(()=>{
         document.querySelector(".thanks-msg").innerHTML =""
         reset()
-    }, 2000)
+    }, 10000)
 
 })
 
@@ -143,7 +145,12 @@ function reset() {
     for(let menuItem of addedToCart){
         document.getElementById(menuItem.name).disabled = false;
     }
-
+    document.getElementById("fullName").value = ""
+    document.getElementById("cardNumber").value = ""
+    document.getElementById("cvv").value = ""
+    document.getElementById("svg-icon").innerHTML = ""
+    cartContainer.innerHTML = ""
     addedToCart = []
+    foodMenu = []
     render()
 }

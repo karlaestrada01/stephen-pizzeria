@@ -15,14 +15,15 @@ img {
 }
 p {
     letter-spacing: .05rem;
+    font-size: 1rem;
 }
-h1 {
+/* h1 {
     font-size: 1.5rem;
     letter-spacing: .05rem;
-}
-h2 {
+} */
+/* h2 {
     font-size: 1rem
-}
+} */
 header {
   
     height:250px;
@@ -43,7 +44,21 @@ header {
     padding: 20px;
     background-color: grey;
     background-blend-mode: screen;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+}
+.container-header h1 {
+    font-size: 2.67rem; 
+   
+    font-weight: 700;
+    margin-bottom: .25em;
+}
+.container-header h3 {
+    font-size: 2rem;
+    font-weight: 300;
 }
 main {
     background-color: #F5F5F5;
@@ -79,14 +94,15 @@ main {
 }
 .item-description {
     letter-spacing: .05rem;
+    font-size: 1rem;
 }
 .item-price {
     letter-spacing: .05rem;
 }
 .add-btn {
     align-self: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     font-size: 1rem;
     border: 2px solid #000;
@@ -108,16 +124,15 @@ main {
     border: 1px solid gray;
     color: gray;
 }
-.added-items {
-  
-}
+
 .chosen-item {
     display: flex;
     justify-content: space-between;
 }
 .word-spacing {
     display: flex;
-    justify-content: space-between;
+
+    align-items: center;
 }
 .food-name {
     margin-right: 20px;
@@ -154,7 +169,7 @@ main {
 .remove-link {
     color: gray;
     text-decoration: none;
-    font-size: 0.857rem;
+    font-size: inherit;
 }
 .remove-link:hover,  .remove-link:focus{
     color: #363945;
@@ -228,4 +243,59 @@ input {
 #svg-icon img {
     display: block;
     margin: 0 auto;
+}
+.thanks-msg {
+    max-width: 900%;
+    width: 90%;
+    text-align: center;
+    
+    margin: 0 auto;
+  
+}
+.thanks-container {
+    background-color: #db8282;
+    padding: 40px;
+    margin-top: 1em;
+    font-size: 1rem;
+    border-radius: 4px;
+    line-height: 2.5rem;
+   
+}
+@media screen and (min-width: 520px){
+
+
+    body {
+        font-size: 1rem;
+    }
+    .container-header h1 {
+        font-size: 3rem;
+    }
+    .container-header h3 {
+        font-size: 2.187rem;
+    }
+    .item-description {
+        font-size: 1.25rem;
+    }
+    .add-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media screen and (min-width: 810px){
+
+
+    body {
+        font-size: 1.25rem;
+    }
+    .container-header h1 {
+        font-size: 3.5rem;
+    }
+    .item-description {
+        font-size: 1.75rem;
+    }
+    .add-btn {
+        width: 40px;
+        height: 40px;
+    }
 }
