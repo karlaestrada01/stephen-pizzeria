@@ -1,109 +1,122 @@
+/**
+ * Stephen Pizzeria is an interactive food ordering website
+ * @author Karla Estrada
+ * @version 1.0
+ *  10.11.2022
+ */
 import { menuItems } from "./data.js"
 import Food from "./Food.js"
+
 const itemContainer = document.querySelector(".items-container")
 const cartContainer = document.querySelector(".cart-container")
 const modalContainer = document.querySelector(".modal-container")
 const payForm = document.getElementById("pay-form")
-//array of our food items
+
 let foodMenu = []
 let addedToCart = []
 const isCartEmpty = true;
+/**
+ * Renders the food items onto the screen
+ */
 function render() {
-    itemContainer.innerHTML = ""
+    let str = itemContainer.innerHTML = ""
 
     for (let item of menuItems){
         const foodItem = new Food(item)
         foodMenu.push(foodItem)
-        itemContainer.innerHTML += foodItem.getFoodItemHtml()
+        str += foodItem.getFoodItemHtml()
     }
+    itemContainer.innerHTML = str
 }
 render()
+
+/**
+ * Event listener for clicks on each menu item's add button
+ */
 itemContainer.addEventListener("click", function(e) {
     cartContainer.style.display = "block"
     const clickedItem = e.target.id
 
     if(clickedItem){
-    for(const food of foodMenu){
-        if(clickedItem === food.name){
+        for(const food of foodMenu){
+            if(clickedItem === food.name){
 
-            food.isAdded = true;
-            addedToCart.push(food)
-            document.getElementById(clickedItem).disabled = true
+                food.isAdded = true;
+                addedToCart.push(food)
+                document.getElementById(clickedItem).disabled = true
 
-            
-        }
-      
-    }
-
-    if(addedToCart.length>0){
+                
+            }
         
-        cartContainer.innerHTML = `
-        <h1>Your cart</h1>
-        <div class="added-items">
+        }
 
-        </div>
-        <div class="total-price">
-            <h2>Total Price: </h2>
-            <h2 id="total-price">$${calculateTotalPrice()}</h2>
-        </div>
-        <button class="complete-order-btn">Complete Order</button>
-        `
-     renderCart()
-    }
+        if(addedToCart.length > 0){
+            cartContainer.innerHTML = `
+                <h1>Your cart</h1>
+                <div class="added-items">
 
-    const completeOrder = document.querySelector(".complete-order-btn")
-    completeOrder.addEventListener("click", function() {
-      
-        modalContainer.style.display = "block"
-    })
-}   
+                </div>
+                <div class="total-price">
+                    <h2>Total Price: </h2>
+                    <h2 id="total-price">$${calculateTotalPrice()}</h2>
+                </div>
+                <button class="complete-order-btn">Complete Order</button>
+            `
+            renderCart()
+        }
+
+        const completeOrder = document.querySelector(".complete-order-btn")
+
+        //Event listener when the complete order button is pressed
+        completeOrder.addEventListener("click", function() {
+            if(addedToCart.length>0){
+                modalContainer.style.display = "block"
+            }
+        })
+
+    }   
 
 })
 
-
+/**
+ * Renders the cart based on user interaction
+ */
 function renderCart() {
-    
-    // if(addedItems>0){
     const addedItems = document.querySelector(".added-items")
     addedItems.innerHTML = ""
+    let str = ""
     let count = 0;
     addedItems.innerHTML = ""
     for(const food of addedToCart){
-        addedItems.innerHTML += `
+        str += `
         <div class="chosen-item">
             <div class="word-spacing">
                 <h2 class="food-name">${food.name}</h2>
                 <p><a class="remove-link" id="${count}" href=#>Remove</a></p>
             </div>
             <h2>$${food.price}</h2>
-        </div>
-        
+        </div> 
         `
         count++;
     }
+    addedItems.innerHTML = str
     document.getElementById("total-price").innerHTML=`$${calculateTotalPrice()}`
-    if(!addedToCart.length>0){
-        //cartContainer.innerHTML = ""
-    }
-   // }
-// else {
-//     cartContainer.innerHTML = ""
-// }
+
+
 }
 /**
  * Removes the item clicked by the user in the cart
  */
 cartContainer.addEventListener("click", function(e) {
- 
     if(e.target.id){
         document.getElementById(addedToCart[e.target.id].name).disabled = false;
         addedToCart.splice(e.target.id, 1)
         renderCart()
     }
-
 })
 /**
  * Calculates total price of elements added to the cart
+ * @returns total
  */
 function calculateTotalPrice() {
     let total = 0
@@ -119,7 +132,6 @@ payForm.addEventListener('submit', function(e) {
     e.preventDefault()
     const form = new FormData(payForm)
     const name = form.get("fullName")
-    console.log(name)
     document.getElementById("svg-icon").innerHTML = `
         <img class="loading" src="images/loading.svg">`
    
@@ -136,10 +148,13 @@ payForm.addEventListener('submit', function(e) {
     setTimeout(()=>{
         document.querySelector(".thanks-msg").innerHTML =""
         reset()
-    }, 10000)
+    }, 8000)
 
 })
 
+/**
+ * Resets properties
+ */
 function reset() {
 
     for(let menuItem of addedToCart){

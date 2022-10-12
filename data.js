@@ -1,3 +1,6 @@
+/**
+ * Contains information of all menu items
+ */
 export const menuItems = [
     {
         name: "Meat Pizza",

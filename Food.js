@@ -1,4 +1,6 @@
-
+/**
+ * Food class
+ */
 class Food {
     constructor(data) {
         Object.assign(this, data)

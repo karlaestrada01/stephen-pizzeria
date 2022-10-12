@@ -17,15 +17,8 @@ p {
     letter-spacing: .05rem;
     font-size: 1rem;
 }
-/* h1 {
-    font-size: 1.5rem;
-    letter-spacing: .05rem;
-} */
-/* h2 {
-    font-size: 1rem
-} */
+
 header {
-  
     height:250px;
     width: 90%;
     max-width: 900px;
@@ -52,7 +45,6 @@ header {
 }
 .container-header h1 {
     font-size: 2.67rem; 
-   
     font-weight: 700;
     margin-bottom: .25em;
 }
@@ -79,7 +71,6 @@ main {
 }
 .item-img {
     width: 20%;
-    /* object-fit: cover; */
     align-self: center;
     margin: 1em 0;
 }
@@ -131,7 +122,6 @@ main {
 }
 .word-spacing {
     display: flex;
-
     align-items: center;
 }
 .food-name {
@@ -154,7 +144,6 @@ main {
     border: none;
     padding: .25em;
     border-radius: 5px;
-   
     background-color: #DA2F2F;
     color: white;
     font-family: inherit;
@@ -203,7 +192,7 @@ input {
     top:0;
     bottom: 0;
     margin: auto;
-   font-family: Times, serif;
+    font-family: Times, serif;
     width: 60%;
     max-width: 400px;
     height: 400px;
@@ -225,15 +214,11 @@ input {
     border-radius: 3px;
     border: none;
     margin-top:20px;
-    font-weight: inherit;
     font-weight: 700;
     cursor: pointer;
 }
 #pay-btn:hover, #pay-btn:focus {
     background-color: #691212; 
-}
-.loading {
-    color: green;
 }
 #svg-icon {
     margin: 15px auto;
@@ -247,8 +232,7 @@ input {
 .thanks-msg {
     max-width: 900%;
     width: 90%;
-    text-align: center;
-    
+    text-align: center; 
     margin: 0 auto;
   
 }
@@ -262,7 +246,6 @@ input {
    
 }
 @media screen and (min-width: 520px){
-
 
     body {
         font-size: 1rem;
@@ -283,8 +266,6 @@ input {
 }
 
 @media screen and (min-width: 810px){
-
-
     body {
         font-size: 1.25rem;
     }
