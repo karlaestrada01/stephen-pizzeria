@@ -71,7 +71,9 @@ main {
 }
 .item-img {
     width: 20%;
+    height: 90px;
     align-self: center;
+    object-fit: cover;
     margin: 1em 0;
 }
 .item-box {
@@ -263,6 +265,10 @@ input {
         width: 35px;
         height: 35px;
     }
+    .item-img {
+        height: 150px;
+    }
+    
 }
 
 @media screen and (min-width: 810px){

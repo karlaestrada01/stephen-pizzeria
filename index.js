@@ -111,6 +111,9 @@ cartContainer.addEventListener("click", function(e) {
     if(e.target.id){
         document.getElementById(addedToCart[e.target.id].name).disabled = false;
         addedToCart.splice(e.target.id, 1)
+        if(addedToCart.length === 0){
+            cartContainer.style.display = "none"
+        }
         renderCart()
     }
 })
